@@ -143,19 +143,19 @@ ui <- fluidPage(
 
         tabPanel("Uniforme", br(), fluidRow(
           column(3, wellPanel(
-            sliderInput("unif_a","Mínimo (a)", min=-10, max=9,  value=0, step=0.5),
-            sliderInput("unif_b","Máximo (b)", min=-9,  max=10, value=1, step=0.5),
+            sliderInput("unif_a","Mínimo (a)", min=0, max=99,  value=0, step=1),
+            sliderInput("unif_b","Máximo (b)", min=1,  max=100, value=1, step=1),
             withMathJax(helpText("$$f(x)=\\frac{1}{b-a},\\quad a\\le x\\le b$$")),
             stats_panel("unif_media","unif_mediana","unif_moda","unif_varianza"),
-            calc_panel("unif", x_min=-10, x_max=10, x_val=0.5)
+            calc_panel("unif", x_min=0, x_max=100, x_val=0.5)
           )),
           column(9, plotOutput("plot_unif", height="420px"))
         )),
 
         tabPanel("Beta", br(), fluidRow(
           column(3, wellPanel(
-            sliderInput("beta_a","Forma \\(\\alpha\\)", min=0.1, max=10, value=2, step=0.1),
-            sliderInput("beta_b","Forma \\(\\beta\\)",  min=0.1, max=10, value=5, step=0.1),
+            sliderInput("beta_a","Forma \\(\\alpha\\)", min=1, max=100, value=2, step=1),
+            sliderInput("beta_b","Forma \\(\\beta\\)",  min=1, max=100, value=5, step=1),
             withMathJax(helpText("$$f(x)=\\frac{x^{\\alpha-1}(1-x)^{\\beta-1}}{B(\\alpha,\\beta)},\\;0<x<1$$")),
             stats_panel("beta_media","beta_mediana","beta_moda","beta_varianza"),
             calc_panel("beta", x_min=0, x_max=1, x_val=0.5, x_step=0.01)
@@ -165,11 +165,11 @@ ui <- fluidPage(
 
         tabPanel("Normal", br(), fluidRow(
           column(3, wellPanel(
-            sliderInput("norm_mu",   "Media \\(\\mu\\)",           min=-10, max=10, value=0, step=0.5),
-            sliderInput("norm_sigma","Desv. típica \\(\\sigma\\)", min=0.1, max=5,  value=1, step=0.1),
+            sliderInput("norm_mu",   "Media \\(\\mu\\)",           min=0, max=100, value=0, step=1),
+            sliderInput("norm_sigma","Desv. típica \\(\\sigma\\)", min=0.1, max=10,  value=1, step=0.1),
             withMathJax(helpText("$$f(x)=\\frac{1}{\\sigma\\sqrt{2\\pi}}\\,e^{-\\frac{(x-\\mu)^2}{2\\sigma^2}}$$")),
             stats_panel("norm_media","norm_mediana","norm_moda","norm_varianza"),
-            calc_panel("norm", x_min=-20, x_max=20, x_val=0)
+            calc_panel("norm", x_min=0, x_max=130, x_val=5)
           )),
           column(9, plotOutput("plot_norm", height="420px"))
         )),
