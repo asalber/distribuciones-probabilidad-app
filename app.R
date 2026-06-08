@@ -186,11 +186,11 @@ ui <- fluidPage(
 
         tabPanel("Gamma", br(), fluidRow(
           column(3, wellPanel(
-            sliderInput("gam_shape","Forma \\(\\alpha\\)", min=0.1, max=10, value=2, step=0.1),
-            sliderInput("gam_rate", "Tasa \\(\\beta\\)",   min=0.1, max=5,  value=1, step=0.1),
+            sliderInput("gam_shape","Forma \\(\\alpha\\)", min=1, max=100, value=2, step=1),
+            sliderInput("gam_rate", "Tasa \\(\\beta\\)",   min=0.1, max=10,  value=1, step=0.1),
             withMathJax(helpText("$$f(x)=\\frac{\\beta^{\\alpha}\\,x^{\\alpha-1}\\,e^{-\\beta x}}{\\Gamma(\\alpha)},\\;x>0$$")),
             stats_panel("gam_media","gam_mediana","gam_moda","gam_varianza"),
-            calc_panel("gam", x_min=0, x_max=30, x_val=2, x_step=0.1)
+            calc_panel("gam", x_min=0, x_max=2000, x_val=2, x_step=0.1)
           )),
           column(9, plotOutput("plot_gam", height="420px"))
         )),
